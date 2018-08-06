@@ -1,11 +1,13 @@
 package com.example.inkza.google_map_api;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
@@ -13,21 +15,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,7 +48,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
+        GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnMarkerClickListener {
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -51,10 +68,30 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
                 return;
             }
+            mMap.setOnMarkerClickListener(this);
+            Marker melbourne = mMap.addMarker(new MarkerOptions()
+                    .position(MELBOURNE)
+                    .title("Melbourne")
+                    .snippet("Population: 4,137,400")
+                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_arror)));
+            Marker melbourne2 = mMap.addMarker(new MarkerOptions()
+                    .position(MELBOURNE2)
+                    .title("Melbourne2")
+                    .snippet("Population: 4,137,400")
+                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_arror)));
+
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
             init();
             }
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        Toast.makeText(this, "ทดสอบ", Toast.LENGTH_SHORT).show();
+        MyCustomDialog dialog =new MyCustomDialog();
+        dialog.show(getSupportFragmentManager(), "");
+        return false;
     }
 
 
@@ -64,29 +101,66 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final float DEFAULT_ZOOM = 15f;
+    private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
+            new LatLng(-40, -168), new LatLng(71, 136));
 
     //widgets
-    private EditText txtKeyword;
+    private AutoCompleteTextView txtKeyword;
 
     //vars
     private Boolean mLocationPermissionsGranted = false;
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
+    private PlaceAutocompleteAdapter placeAutocompleteAdapter;
+    private GoogleApiClient mGoogleApiClient;
+    private static final LatLng MELBOURNE = new LatLng(18.914650, 98.910717);
+    private static final LatLng MELBOURNE2 = new LatLng(18.914650, 98.950717);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        txtKeyword = (EditText) findViewById(R.id.txtKeyword);
-
-
+        txtKeyword = (AutoCompleteTextView) findViewById(R.id.txtKeyword);
         getLocationPermission();
 
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+            navigation.setSelectedItemId(R.id.navigation_dashboard);
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+
+                    return true;
+                case R.id.navigation_dashboard:
+
+                    return true;
+                case R.id.navigation_notifications:
+
+                    return true;
+            }
+            return false;
+        }
+    };
+
+
+
 
     private void init(){
+        mGoogleApiClient = new GoogleApiClient
+                .Builder(this)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
+                .enableAutoManage(this, this)
+                .build();
+        placeAutocompleteAdapter = new PlaceAutocompleteAdapter(this,mGoogleApiClient,LAT_LNG_BOUNDS,null);
+        txtKeyword.setAdapter(placeAutocompleteAdapter);
         //*** Button Search
-        Button btnSearch = (Button) findViewById(R.id.btnSearch);
+        ImageView btnSearch = (ImageView) findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 geoLocate();
@@ -129,6 +203,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     address.getAddressLine(0));
 
         }
+
+        txtKeyword.setText("");
+
     }
 
 
@@ -171,7 +248,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         MarkerOptions options = new MarkerOptions()
                 .position(latLng).title(title);
-        mMap.addMarker(options);
+        //mMap.addMarker(options);
     }
 
     private void initMap(){
@@ -230,6 +307,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         }
     }
+
 
 
 }

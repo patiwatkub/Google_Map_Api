@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TolietDetail"
+    android:orientation="vertical"
+    android:background="#EBEBEB">
+
+
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:background="@drawable/white_border"
+        android:padding="3dip"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="สิ่งอำนวจความสะดวก"
+            android:textStyle="bold|italic"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            />
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TableRow
+                android:padding="3dip">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_wc_black_24dp"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:text="ชักโครก"
+                    android:textColor="#000"
+                    ></TextView>
+            </TableRow>
+           <TableRow
+               android:padding="3dip"
+               android:gravity="center">
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/ic_wc_black_24dp"/>
+
+               <TextView
+                   android:layout_width="100dp"
+                   android:layout_height="wrap_content"
+                   android:gravity="left"
+                   android:lines="2"
+                   android:maxLines="2"
+                   android:text="ก๊อกน้ำ"
+                   android:textColor="#EBEBEB"
+                ></TextView>
+           </TableRow>
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TableRow
+                android:padding="3dip">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_wc_black_24dp"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:text="ฝักบัว"
+                    android:textColor="#EBEBEB"
+                 ></TextView>
+            </TableRow>
+            <TableRow
+                android:padding="3dip"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_wc_black_24dp"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:text="สายฉีดชำระ"
+                    android:textColor="#000"
+                   ></TextView>
+            </TableRow>
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TableRow
+                android:padding="3dip">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_wc_black_24dp"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:text="กระดาษชําระ"
+                    android:textColor="#EBEBEB"
+                    ></TextView>
+            </TableRow>
+            <TableRow
+                android:padding="3dip"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_wc_black_24dp"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:text="หลอดไฟ"
+                    android:textColor="#000"
+                  ></TextView>
+            </TableRow>
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TableRow
+                android:padding="3dip">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_wc_black_24dp"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:text="ห้องน้ําผู้พิการ"
+                    android:textColor="#000"
+                   ></TextView>
+            </TableRow>
+            <TableRow
+                android:padding="3dip"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_wc_black_24dp"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:text="อ่างล้างมือ"
+                    android:textColor="#000"
+                 ></TextView>
+            </TableRow>
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TableRow
+                android:padding="3dip">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_wc_black_24dp"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:text="กระจก"
+                    android:textColor="#000"
+                   ></TextView>
+            </TableRow>
+            <TableRow
+                android:padding="3dip"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_wc_black_24dp"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:text="ส้วมนั่งยอง"
+                    android:textColor="#EBEBEB"
+                    ></TextView>
+            </TableRow>
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+    </TableLayout>
+
+
+</LinearLayout>
