@@ -63,7 +63,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onMapReady: map is ready");
         mMap = googleMap;
         if (mLocationPermissionsGranted) {
@@ -94,7 +94,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        Toast.makeText(this, "ทดสอบ", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "ทดสอบ", Toast.LENGTH_SHORT).show();
         MyCustomDialog dialog =new MyCustomDialog();
         dialog.show(getSupportFragmentManager(), "");
         return false;
@@ -188,7 +188,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
 
     private void geoLocate(){
-
         Log.d(TAG, "geoLocate: geolocating");
 
         String searchString = txtKeyword.getText().toString();
@@ -205,7 +204,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
             Address address = list.get(0);
 
             Log.d(TAG, "geoLocate: found a location: " + address.toString());
-            Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
 
             moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM,
                     address.getAddressLine(0));
@@ -236,7 +235,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
                             Log.d(TAG, "onComplete: found location!");
                             Location currentLocation = (Location) task.getResult();
 
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFAULT_ZOOM));
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFAULT_ZOOM));
 
 
                         }else{
@@ -252,7 +251,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     }
     private void moveCamera(LatLng latLng, float zoom, String title){
         Log.d(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude );
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
         MarkerOptions options = new MarkerOptions()
                 .position(latLng).title(title);
