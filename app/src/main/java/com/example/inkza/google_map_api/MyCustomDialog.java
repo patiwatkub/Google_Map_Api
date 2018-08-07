@@ -37,19 +37,22 @@ public class MyCustomDialog extends DialogFragment {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),"edit!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ToiletEdit.class);
+                startActivity(intent);
             }
         });
         review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),"review!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ToiletReview.class);
+                startActivity(intent);
             }
         });
         delite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),"delite!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ToiletDelete.class);
+                startActivity(intent);
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {

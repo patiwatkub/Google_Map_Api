@@ -32,7 +32,10 @@
         <activity android:name=".MapActivity" />
         <activity android:name=".TolietDetail" />
         <activity android:name=".ToiletAdd" />
-        <activity android:name=".ToiletEdit"></activity>
+        <activity android:name=".ToiletEdit" />
+        <activity android:name=".ToiletReview" />
+        <activity android:name=".ToiletDelete" />
+        <activity android:name=".ViewReview"></activity>
     </application>
 
 </manifest>

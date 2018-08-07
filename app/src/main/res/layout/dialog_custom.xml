@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
-                android:text="ดูข้อมูล"/>
+                android:text="แก้ไขรายละเอียด"/>
         </LinearLayout>
         <LinearLayout
             android:gravity="center"
@@ -47,25 +47,28 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <Button
-                android:id="@+id/Bt_delite"
+                android:id="@+id/Bt_review"
+
                 android:background="@drawable/favourites2"
+
                 android:layout_width="80dp"
                 android:layout_height="80dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="ดูข้อมูล"/>
+                android:text="รีวิวห้องสุขา"/>
+
             <Button
-                android:id="@+id/Bt_review"
-                android:layout_marginTop="20dp"
+                android:id="@+id/Bt_delite"
                 android:background="@drawable/trash"
+                android:layout_marginTop="20dp"
                 android:layout_width="80dp"
                 android:layout_height="80dp" />
             <TextView
                 android:layout_marginBottom="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="ดูข้อมูล"/>
+                android:text="ไม่พบห้องสุขา"/>
         </LinearLayout>
     </LinearLayout>
 

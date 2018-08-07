@@ -2,6 +2,7 @@ package com.example.inkza.google_map_api;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
@@ -20,44 +21,25 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-
+    private static int SPLASH_TIME_OUT = 9001;
     private static final int ERROR_DIALOG_REQUEST = 9001;
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-
-                    return true;
-                case R.id.navigation_dashboard:
-//                    Intent intent = new Intent(MainActivity.this, TolietDetail.class);
-//                    startActivity(intent);
-                    if(isServicesOK()){
-                        init();
-                    }
-                    return true;
-                case R.id.navigation_notifications:
-
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(isServicesOK()){
+                    init();
+                }
+            }
+        },SPLASH_TIME_OUT);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        if(isServicesOK()){
-            navigation.setSelectedItemId(R.id.navigation_dashboard);
-        }
+
 
 
     }

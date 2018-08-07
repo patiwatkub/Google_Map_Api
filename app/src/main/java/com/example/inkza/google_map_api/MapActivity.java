@@ -1,8 +1,12 @@
 package com.example.inkza.google_map_api;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -11,6 +15,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +52,7 @@ import com.google.android.gms.tasks.Task;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnMarkerClickListener {
@@ -122,6 +128,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         setContentView(R.layout.activity_map);
         txtKeyword = (AutoCompleteTextView) findViewById(R.id.txtKeyword);
         getLocationPermission();
+        loadLocal();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -141,7 +148,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
                     return true;
                 case R.id.navigation_notifications:
-
+                    shoeChangeLanguage();
                     return true;
             }
             return false;
@@ -307,6 +314,54 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
                 }
             }
         }
+    }
+
+    private void shoeChangeLanguage() {
+        final String [] listItems = {"ไทย","中国","English"};
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MapActivity.this);
+        mBuilder.setTitle("Choose Language . . .");
+        mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(i == 0){
+                    setLlocale("th");
+
+                    recreate();
+                }
+                else if(i == 1){
+                    setLlocale("zh");
+
+                    recreate();
+                }
+                else if(i == 2){
+                    setLlocale("en");
+
+                    recreate();
+                }
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog mDialog = mBuilder.create();
+
+        mDialog.show();
+    }
+    private void setLlocale(String lang) {
+
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+
+        SharedPreferences.Editor editor = getSharedPreferences("Settings",MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+    }
+
+    public void loadLocal(){
+        SharedPreferences prefs = getSharedPreferences("Settings" , Activity.MODE_PRIVATE);
+        String language = prefs.getString("My_Lang","");
+        setLlocale(language);
     }
 
 
