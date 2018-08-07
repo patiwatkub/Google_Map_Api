@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TolietDetail"
     android:orientation="vertical"
     android:background="#EBEBEB">
 
+    <TableLayout  android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:background="@drawable/white_border"
+        android:padding="3dip"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:text="คะแนน 4.0 ดี"
+                android:padding="3dip" />
+            <TextView
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:text="1 รีวิว"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+    </TableLayout>
 
 
     <TableLayout
@@ -16,7 +47,9 @@
         android:stretchColumns="1"
         android:background="@drawable/white_border"
         android:padding="3dip"
-        android:layout_margin="5dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,9 +69,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_wc_black_24dp"/>
+                    android:src="@drawable/wc"/>
 
                 <TextView
+                    android:layout_marginLeft="2dp"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
@@ -54,9 +88,10 @@
                <ImageView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:src="@drawable/ic_wc_black_24dp"/>
+                   android:src="@drawable/faucet"/>
 
                <TextView
+                   android:layout_marginLeft="2dp"
                    android:layout_width="100dp"
                    android:layout_height="wrap_content"
                    android:gravity="left"
@@ -81,9 +116,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_wc_black_24dp"/>
+                    android:src="@drawable/shower"/>
 
                 <TextView
+                    android:layout_marginLeft="2dp"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
@@ -99,9 +135,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_wc_black_24dp"/>
+                    android:src="@drawable/hose"/>
 
                 <TextView
+                    android:layout_marginLeft="2dp"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
@@ -126,9 +163,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_wc_black_24dp"/>
+                    android:src="@drawable/toilet_paper"/>
 
                 <TextView
+                    android:layout_marginLeft="2dp"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
@@ -144,9 +182,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_wc_black_24dp"/>
+                    android:src="@drawable/lamp"/>
 
                 <TextView
+                    android:layout_marginLeft="2dp"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
@@ -171,16 +210,17 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_wc_black_24dp"/>
+                    android:src="@drawable/handicap"/>
 
                 <TextView
+                    android:layout_marginLeft="2dp"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:lines="2"
                     android:maxLines="2"
                     android:text="ห้องน้ําผู้พิการ"
-                    android:textColor="#000"
+                    android:textColor="#EBEBEB"
                    ></TextView>
             </TableRow>
             <TableRow
@@ -189,9 +229,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_wc_black_24dp"/>
+                    android:src="@drawable/sink"/>
 
                 <TextView
+                    android:layout_marginLeft="2dp"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
@@ -216,9 +257,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_wc_black_24dp"/>
+                    android:src="@drawable/mirror"/>
 
                 <TextView
+                    android:layout_marginLeft="2dp"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
@@ -234,9 +276,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_wc_black_24dp"/>
+                    android:src="@drawable/toilet"/>
 
                 <TextView
+                    android:layout_marginLeft="2dp"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:gravity="left"
@@ -248,10 +291,157 @@
             </TableRow>
         </TableRow>
 
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TableRow
+                android:padding="3dip">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/urinal"/>
+
+                <TextView
+                    android:layout_marginLeft="2dp"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:text="โถปัสสาวะ"
+                    android:textColor="#EBEBEB"
+                    ></TextView>
+            </TableRow>
+
+        </TableRow>
+
+
         <View
             android:layout_height="2dip"
             android:background="#FF909090" />
     </TableLayout>
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:background="@drawable/white_border"
+        android:padding="3dip"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ข้อมูลที่เป็นประโยชน์"
+            android:textStyle="bold|italic"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            />
+        <TableRow>
+            <TextView
+                android:textColor="#000"
+                android:text="ประเภทห้องสุขา"
+                android:padding="3dip" />
+            <TextView
+                android:textColor="#000"
+                android:text="ห้องสุขารวม"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+            <TextView
+                android:textColor="#000"
+                android:text="เวลาเปิด"
+                android:padding="3dip" />
+            <TextView
+                android:textColor="#000"
+                android:text="-"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+            <TextView
+                android:textColor="#000"
+                android:text="เวลาปิด"
+                android:padding="3dip" />
+            <TextView
+                android:textColor="#000"
+                android:text="-"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+        <TableRow>
+            <TextView
+                android:textColor="#000"
+                android:text="จำนวนห้อง"
+                android:padding="3dip" />
+            <TextView
+                android:textColor="#000"
+                android:text="4"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+            <TextView
+                android:textColor="#000"
+                android:text="ค่าบริการ"
+                android:padding="3dip" />
+            <TextView
+                android:textColor="#000"
+                android:text="-"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ดูรีวิวทั้งหมด" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ยอนกลับ" />
+        </LinearLayout>
+    </TableLayout>
 
 </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -30,7 +30,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MapActivity" />
-        <activity android:name=".TolietDetail"></activity>
+        <activity android:name=".TolietDetail" />
+        <activity android:name=".ToiletAdd" />
+        <activity android:name=".ToiletEdit"></activity>
     </application>
 
 </manifest>

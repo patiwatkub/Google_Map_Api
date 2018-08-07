@@ -134,7 +134,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-
+                    Intent intent = new Intent(MapActivity.this, ToiletAdd.class);
+                    startActivity(intent);
                     return true;
                 case R.id.navigation_dashboard:
 
